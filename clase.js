@@ -58,8 +58,14 @@ arrayDeArticulos.forEach((articulo) => {
   nuevaFila.append(celdaInput);
 
   const celdaPrice = document.createElement("td");
+  celdaPrice.id = articulo.SKU;
   celdaPrice.textContent = articulo.price;
   nuevaFila.append(celdaPrice);
+
+  const celdaTotal = document.createElement("td");
+  celdaTotal.id = articulo.SKU;
+  celdaTotal.textContent = "0";
+  nuevaFila.append(celdaTotal);
 
   miDiv.append(nuevaFila);
 });
@@ -71,6 +77,8 @@ miDiv.addEventListener("click", (event) => {
   const queHago = targetEs.id;
   console.log("ACCION==>" + queHago);
   const inputCantidad = document.getElementById(dataIde);
+  const celdaSubTotal = document.getElementById(dataIde);
+  const celdaPrecio = document.getElementById(dataIde);
   console.log("data id del Input -->" + inputCantidad.dataset.id);
 
   if (queHago === "incrementar") {
@@ -80,19 +88,18 @@ miDiv.addEventListener("click", (event) => {
     if (queHago === "decrementar" && inputCantidad.value >= 1) {
       console.log("Decrementar en SKU " + inputCantidad.dataset.id);
       inputCantidad.value--;
+    } else {
+      if (queHago === dataIde && !isNaN(inputCantidad.value)) {
+        console.log("Estoy en un input ->" + inputCantidad.value);
+        console.log("estoy despues del input" + inputCantidad.value);
+      } else {
+        inputCantidad.value = 0;
+      }
     }
   }
-
-  /*if (queHago === "incrementar") {
-    aumentarCantidad();
-  } else if (queHago === "decrementar") {
-    decrementarCantidad();
-  }*/
+  console.log("estoy afuera de todo -->" + inputCantidad.value);
+  console.log("sigo afuera" + celdaPrice);
 });
-
-//const inputCantidad = document.getElementById("cantidad");
-//const btnDecrementa = document.getElementById("decrementar");
-//const btnIncrementa = document.getElementById("incrementar");
 
 function aumentarCantidad() {
   const valorActual = parseInt(inputCantidad.value);
@@ -101,6 +108,7 @@ function aumentarCantidad() {
     console.log("--DATA SET ID en incrementar -->" + inputCantidad.dataset.id);
     inputCantidad.value = valorActual + 1;
   } else {
+    console.log("estoy aca");
     inputCantidad.value = 0;
   }
 }
