@@ -34,31 +34,18 @@ arrayDeArticulos.forEach((articulo) => {
   debugger;
   const celdaInput = document.createElement("td");
 
-  const btnDecr = document.createElement("button");
-  btnDecr.id = "decrementar";
-  btnDecr.textContent = "-";
-  btnDecr.setAttribute("data-id", articulo.SKU);
-  //btnDecr.addEventListener("click", () => decrementarCantidad());
-  debugger;
   const btnIngresa = document.createElement("input");
   btnIngresa.type = "number";
   btnIngresa.id = "ingresa";
   btnIngresa.setAttribute("data-id", articulo.SKU);
   btnIngresa.value = "0";
-  debugger;
-  const btnIncr = document.createElement("button");
-  btnIncr.id = "incrementar";
-  btnIncr.textContent = "+";
-  btnIncr.setAttribute("data-id", articulo.SKU);
-  //btnIncr.addEventListener("click", () => aumentarCantidad());
-  debugger;
-  celdaInput.append(btnIncr);
+
   celdaInput.append(btnIngresa);
-  celdaInput.append(btnDecr);
+
   nuevaFila.append(celdaInput);
 
   const celdaPrice = document.createElement("td");
-  //celdaPrice.id = articulo.SKU;
+
   celdaPrice.setAttribute("data-id", articulo.SKU);
   celdaPrice.textContent = articulo.price;
   nuevaFila.append(celdaPrice);
@@ -71,61 +58,29 @@ arrayDeArticulos.forEach((articulo) => {
   miDiv.append(nuevaFila);
 });
 
-miDiv.addEventListener("click", (event) => {
+miDiv.addEventListener("input", (event) => {
   const targetEs = event.target;
 
   const dataIde = targetEs.dataset.id;
   console.log("SKU==>" + dataIde);
   const queHago = targetEs.id;
   console.log("ACCION==>" + queHago);
-  //const inputCantidad = document.getElementById(dataIde);
+
   const inputCantidad = document.querySelector('[data-id="' + dataIde + '"]');
-
-  //const celdaSubTotal = document.getElementById(dataIde);
-  //const celdaPrecio = document.getElementById(dataIde);
+  const celdaCantidad = document.querySelector(
+    '[data-id="' + dataIde + '-cantidad"]'
+  );
   const celdaSubTotal = document.querySelector('[data-id="' + dataIde + '"]');
-
+  const nuevoValor = Math.max(0, inputCantidad.value);
+  inputCantidad.value = nuevoValor;
   console.log("data id del Input -->" + inputCantidad.dataset.id);
-
-  if (queHago === "incrementar") {
-    console.log("Incrementar en SKU " + inputCantidad.dataset.id);
-    inputCantidad.value++;
-  } else {
-    if (queHago === "decrementar" && inputCantidad.value >= 1) {
-      console.log("Decrementar en SKU " + inputCantidad.dataset.id);
-      inputCantidad.value--;
-    } else {
-      if (queHago === "ingresa" && !isNaN(inputCantidad.value)) {
-        console.log("Estoy en un input ->" + inputCantidad.value);
-        console.log("estoy despues del input" + inputCantidad.value);
-      } else {
-        inputCantidad.value = 0;
-      }
-    }
-  }
-
   console.log("estoy afuera de todo -->" + inputCantidad.value);
+  const modificaPrecio = document.getElementById(dataIde);
+  const precioArticulo = arrayDeArticulos.find(
+    (articuloBuscado) => articuloBuscado.SKU === dataIde
+  );
+
+  modificaPrecio.textContent = (
+    inputCantidad.value * precioArticulo.price
+  ).toFixed(2);
 });
-
-function aumentarCantidad() {
-  const valorActual = parseInt(inputCantidad.value);
-  if (!isNaN(valorActual)) {
-    console.log("--Cuantos DENTRO del if INCREMENTAR ->" + valorActual);
-    console.log("--DATA SET ID en incrementar -->" + inputCantidad.dataset.id);
-    inputCantidad.value = valorActual + 1;
-  } else {
-    console.log("estoy aca");
-    inputCantidad.value = 0;
-  }
-}
-
-function decrementarCantidad() {
-  const valorActual = parseInt(inputCantidad.value);
-  if (!isNaN(valorActual) && valorActual > 0) {
-    inputCantidad.value = valorActual - 1;
-    console.log("--Cuantos DENTRO del if DECREMENTAR ->" + valorActual);
-    console.log("--DATA SET ID en DECREMENTAR -->" + inputCantidad.dataset.id);
-  } else {
-    inputCantidad.value = 0;
-  }
-}
