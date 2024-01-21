@@ -41,8 +41,8 @@ arrayDeArticulos.forEach((articulo) => {
   //btnDecr.addEventListener("click", () => decrementarCantidad());
   debugger;
   const btnIngresa = document.createElement("input");
-  btnIngresa.type = "text";
-  btnIngresa.id = articulo.SKU;
+  btnIngresa.type = "number";
+  btnIngresa.id = "ingresa";
   btnIngresa.setAttribute("data-id", articulo.SKU);
   btnIngresa.value = "0";
   debugger;
@@ -58,13 +58,14 @@ arrayDeArticulos.forEach((articulo) => {
   nuevaFila.append(celdaInput);
 
   const celdaPrice = document.createElement("td");
-  celdaPrice.id = articulo.SKU;
+  //celdaPrice.id = articulo.SKU;
+  celdaPrice.setAttribute("data-id", articulo.SKU);
   celdaPrice.textContent = articulo.price;
   nuevaFila.append(celdaPrice);
 
   const celdaTotal = document.createElement("td");
   celdaTotal.id = articulo.SKU;
-  celdaTotal.textContent = "0";
+  celdaTotal.textContent = 0;
   nuevaFila.append(celdaTotal);
 
   miDiv.append(nuevaFila);
@@ -72,13 +73,18 @@ arrayDeArticulos.forEach((articulo) => {
 
 miDiv.addEventListener("click", (event) => {
   const targetEs = event.target;
+
   const dataIde = targetEs.dataset.id;
   console.log("SKU==>" + dataIde);
   const queHago = targetEs.id;
   console.log("ACCION==>" + queHago);
-  const inputCantidad = document.getElementById(dataIde);
-  const celdaSubTotal = document.getElementById(dataIde);
-  const celdaPrecio = document.getElementById(dataIde);
+  //const inputCantidad = document.getElementById(dataIde);
+  const inputCantidad = document.querySelector('[data-id="' + dataIde + '"]');
+
+  //const celdaSubTotal = document.getElementById(dataIde);
+  //const celdaPrecio = document.getElementById(dataIde);
+  const celdaSubTotal = document.querySelector('[data-id="' + dataIde + '"]');
+
   console.log("data id del Input -->" + inputCantidad.dataset.id);
 
   if (queHago === "incrementar") {
@@ -89,7 +95,7 @@ miDiv.addEventListener("click", (event) => {
       console.log("Decrementar en SKU " + inputCantidad.dataset.id);
       inputCantidad.value--;
     } else {
-      if (queHago === dataIde && !isNaN(inputCantidad.value)) {
+      if (queHago === "ingresa" && !isNaN(inputCantidad.value)) {
         console.log("Estoy en un input ->" + inputCantidad.value);
         console.log("estoy despues del input" + inputCantidad.value);
       } else {
@@ -97,8 +103,8 @@ miDiv.addEventListener("click", (event) => {
       }
     }
   }
+
   console.log("estoy afuera de todo -->" + inputCantidad.value);
-  console.log("sigo afuera" + celdaPrice);
 });
 
 function aumentarCantidad() {
