@@ -69,5 +69,17 @@ function escucharInput(arrayDeArticulos) {
     modificaPrecio.textContent = (
       inputCantidad.value * precioArticulo.price
     ).toFixed(2);
-  }); //aca termina el listenner del Input
-}
+
+    const indice_del_articulo = array_del_carro.findIndex(
+      (producto) => producto.sku === dataIde
+    );
+    console.log("este es el indice ==> " + indice_del_articulo);
+
+    if (indice_del_articulo !== -1) {
+      modificarCarro(indice_del_articulo, inputCantidad.value);
+    } else {
+      console.log("el precio antes de el carro " + precioArticulo.price);
+      agregarAlCarro(dataIde, inputCantidad.value, precioArticulo.price);
+    }
+  });
+} //aca termina el listenner del Input

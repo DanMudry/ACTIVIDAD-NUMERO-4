@@ -15,6 +15,8 @@ let libreriaArticulos = [
     price: "79.99",
   },
 ];
+let array_del_carro = [];
+let carro_activado = false;
 
 document.addEventListener("DOMContentLoaded", function () {
   crearTabla(libreriaArticulos);
