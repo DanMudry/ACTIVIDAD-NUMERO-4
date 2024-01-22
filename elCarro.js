@@ -19,6 +19,9 @@ function agregarAlCarro(sku, cant, precio) {
 function modificarCarro(indice, modifica_cantidad) {
   console.log("estoy en modificaCarro");
   array_del_carro[indice].cantidad = modifica_cantidad;
+  array_del_carro[indice].total = (
+    modifica_cantidad * array_del_carro[indice].precio
+  ).toFixed(2);
   array_del_carro.forEach((prod) => {
     console.log(prod);
   });
