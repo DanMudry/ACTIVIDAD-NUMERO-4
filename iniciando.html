@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
   </head>
   <body>
@@ -11,20 +12,41 @@
         <p class="heading-3">agoodshoop</p>
       </div>
     </header>
+    <div class="miDiv">
+      <div class="primer_tabla">
     <table class="laTabla" border="1">
       <!-- Encabezado de la tabla -->
       <thead>
         <tr>
-          <th>Producto</th>
-          <th>Cantidad</th>
-          <th>Precio</th>
-          <th>Total</th>
+          <th class="columna_tabla">Producto</th>
+          <th class="columna_tabla">Cantidad</th>
+          <th class="columna_tabla">Precio</th>
+          <th class="columna_tabla">Total</th>
         </tr>
       </thead>
 
       <!-- Cuerpo de la tabla -->
       <tbody id="cuerpoTabla"></tbody>
     </table>
+     <!-- termina primer tabla-->
+
+    </div>
+    <div class="segunda_tabla">
+      <table class="tabla_del_carro" id="tabla2" border="1">
+      
+      <thead>
+        <tr>
+          <th class="columna_tabla">Articulos</th>
+          <th class="columna_tabla">Importe</th>
+        </tr>
+      </thead>
+
+      <!-- Cuerpo de la tabla -->
+      <tbody id="cuerpoTablaCarro"></tbody>
+    </table>
+  </div>
+  </div>
+
 
     <script src="clase.js"></script>
     <script src="elCarro.js"></script>

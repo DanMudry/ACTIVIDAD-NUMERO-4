@@ -42,12 +42,13 @@ function crearTabla(arrayDeArticulos) {
   }); //aca termina el forEach para crear la tabla
 }
 
-function escucharInput(arrayDeArticulos) {
+function escucharInput(/*arrayDeArticulos*/) {
   const escucha = document.getElementById("cuerpoTabla");
   escucha.addEventListener("input", (event) => {
     const targetEs = event.target;
 
     const dataIde = targetEs.dataset.id;
+    console.log("*** ESCUCHANDO ***");
     console.log("SKU==>" + dataIde);
     const queHago = targetEs.id;
     console.log("ACCION==>" + queHago);
@@ -62,13 +63,14 @@ function escucharInput(arrayDeArticulos) {
     console.log("data id del Input -->" + inputCantidad.dataset.id);
     console.log("estoy afuera de todo -->" + inputCantidad.value);
     const modificaPrecio = document.getElementById(dataIde);
-    const precioArticulo = arrayDeArticulos.find(
+    const precioArticulo = /*arrayDeArticulos*/ libreriaArticulos.find(
       (articuloBuscado) => articuloBuscado.SKU === dataIde
     );
 
     modificaPrecio.textContent = (
       inputCantidad.value * precioArticulo.price
     ).toFixed(2);
+    //return dataIde;
 
     const indice_del_articulo = array_del_carro.findIndex(
       (producto) => producto.sku === dataIde
@@ -83,3 +85,31 @@ function escucharInput(arrayDeArticulos) {
     }
   });
 } //aca termina el listenner del Input
+
+function modifica_DOM_carro(sku, total) {
+  console.log("Estoy modificando ===");
+  const art_DOM_modificado = document.getElementById(sku + "carro");
+  art_DOM_modificado.textContent = total;
+  que_pasa++;
+  console.log("estoy en MODIFICA ===+++++>" + que_pasa);
+}
+
+function agrega_DOM_carro(sku, total) {
+  console.log("sku que le pase " + sku);
+  console.log("este es el total que te pase " + total);
+  miCarro = document.getElementById("cuerpoTablaCarro");
+  const nuevaFila = document.createElement("tr");
+
+  const articulo_carro = encuentra_Articulo(sku);
+  const celda_art_carro = document.createElement("td");
+  celda_art_carro.textContent = articulo_carro.title;
+  nuevaFila.append(celda_art_carro);
+
+  const celda_tot_carro = document.createElement("td");
+  celda_tot_carro.textContent = total;
+  celda_tot_carro.setAttribute("id", sku_A + "carro");
+  nuevaFila.append(celda_tot_carro);
+  miCarro.append(nuevaFila);
+  que_pasa++;
+  console.log("estoy en AGREGA ***===>" + que_pasa);
+}
