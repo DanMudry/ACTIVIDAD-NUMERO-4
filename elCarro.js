@@ -9,29 +9,27 @@ class Producto {
 
 function agregarAlCarro(sku, cant, precio) {
   array_del_carro.push(new Producto(sku, cant, precio));
-  array_del_carro.forEach((prod) => {
-    console.log(prod);
-    const ind = array_del_carro.length;
-    agrega_DOM_carro(
-      array_del_carro[ind - 1].sku,
-      array_del_carro[ind - 1].total
-    );
-  });
 }
 
 function modificarCarro(indice, modifica_cantidad) {
-  console.log("estoy en modificaCarro");
+  console.log("estoy en modificaCarro " + array_del_carro.length);
   array_del_carro[indice].cantidad = modifica_cantidad;
   array_del_carro[indice].total = (
     modifica_cantidad * array_del_carro[indice].precio
   ).toFixed(2);
-  array_del_carro.forEach((prod) => {
+  /*array_del_carro.forEach((prod) => {
     console.log(prod);
-  });
-  modifica_DOM_carro(
-    array_del_carro[indice].sku,
-    array_del_carro[indice].total
+  });*/
+  console.log(
+    "este es el puto totallllll ====> " + array_del_carro[indice].total
   );
+  if (array_del_carro[indice].total == 0.0) {
+    console.log("ESTOY POR IR A REMUEVE");
+    remueve_Nodo_Carro(indice);
+    array_del_carro.splice(indice, 1);
+  } else {
+    modifica_Tabla_Carro(indice);
+  }
 }
 
 function encuentra_Articulo(sku) {
