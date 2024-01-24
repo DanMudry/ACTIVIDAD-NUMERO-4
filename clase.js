@@ -42,16 +42,14 @@ function crearTabla(arrayDeArticulos) {
   }); //aca termina el forEach para crear la tabla
 }
 
-function escucharInput(/*arrayDeArticulos*/) {
+function escucharInput() {
   const escucha = document.getElementById("cuerpoTabla");
   escucha.addEventListener("input", (event) => {
     const targetEs = event.target;
 
     const dataIde = targetEs.dataset.id;
-    console.log("*** ESCUCHANDO ***");
-    console.log("SKU==>" + dataIde);
+
     const queHago = targetEs.id;
-    console.log("ACCION==>" + queHago);
 
     const inputCantidad = document.querySelector('[data-id="' + dataIde + '"]');
     const celdaCantidad = document.querySelector(
@@ -63,7 +61,7 @@ function escucharInput(/*arrayDeArticulos*/) {
     console.log("data id del Input -->" + inputCantidad.dataset.id);
     console.log("estoy afuera de todo -->" + inputCantidad.value);
     const modificaPrecio = document.getElementById(dataIde);
-    const precioArticulo = /*arrayDeArticulos*/ libreriaArticulos.find(
+    const precioArticulo = libreriaArticulos.find(
       (articuloBuscado) => articuloBuscado.SKU === dataIde
     );
 
@@ -84,4 +82,5 @@ function escucharInput(/*arrayDeArticulos*/) {
       armar_Tabla_Carro(array_del_carro.length - 1);
     }
   });
-} //aca termina el listenner del Input
+} //aca termina el listenner del Input}
+//modificando

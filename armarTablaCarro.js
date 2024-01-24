@@ -42,3 +42,4 @@ function remueve_Nodo_Carro(indice) {
   fila_Borrar.removeChild(nodo_Borrar);
   array_del_carro.splice(indice, 1);
 }
+//modificando

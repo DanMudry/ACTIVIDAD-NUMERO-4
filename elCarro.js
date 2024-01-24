@@ -20,11 +20,8 @@ function modificarCarro(indice, modifica_cantidad) {
   /*array_del_carro.forEach((prod) => {
     console.log(prod);
   });*/
-  console.log(
-    "este es el puto totallllll ====> " + array_del_carro[indice].total
-  );
+
   if (array_del_carro[indice].total == 0.0) {
-    console.log("ESTOY POR IR A REMUEVE");
     remueve_Nodo_Carro(indice);
     array_del_carro.splice(indice, 1);
   } else {
@@ -37,3 +34,4 @@ function encuentra_Articulo(sku) {
     (articuloBuscado) => articuloBuscado.SKU === sku
   );
 }
+//modificando

@@ -18,7 +18,9 @@ let libreriaArticulos = [
 let array_del_carro = [];
 let carro_activado = false;
 let que_pasa = 0;
+
 crearTabla(libreriaArticulos);
 document.addEventListener("DOMContentLoaded", function () {
-  escucharInput(/*libreriaArticulos*/);
+  escucharInput();
 });
+//modificando
