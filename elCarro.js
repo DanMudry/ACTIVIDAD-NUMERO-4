@@ -34,4 +34,10 @@ function encuentra_Articulo(sku) {
     (articuloBuscado) => articuloBuscado.SKU === sku
   );
 }
+
+function sumar_Total_Carro(sumando_Carro) {
+  return sumando_Carro.reduce((acumulador, sumando_Carro) => {
+    return acumulador + parseFloat(sumando_Carro.total);
+  }, 0);
+}
 //modificando

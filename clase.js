@@ -75,10 +75,17 @@ function escucharInput() {
 
     if (indice_del_articulo !== -1) {
       modificarCarro(indice_del_articulo, inputCantidad.value);
+      console.log(
+        "estoy al principio del input #### " + array_del_carro.length
+      );
+
+      //armo_Total_Carro();
     } else {
       console.log("el precio antes de el carro " + precioArticulo.price);
+      carro_activado = true;
       agregarAlCarro(dataIde, inputCantidad.value, precioArticulo.price);
       armar_Tabla_Carro(array_del_carro.length - 1);
+      //armo_Total_Carro();
     }
   });
 } //aca termina el listenner del Input}

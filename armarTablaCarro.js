@@ -1,3 +1,27 @@
+/*function armo_Total_Carro() {
+  /*var tabla_Borrar = document.getElementById("carro_Total");
+  var nodo_Total_Borrar = document.getElementById("tabla_Del_Total");
+  tabla_Borrar.remove(nodo_Total_Borrar);*/
+/*const num = sumar_Total_Carro(array_del_carro);
+  const suma_Carro = document.getElementById("carro_Total");
+  const tabla_del_Total_Carro = document.createElement("table");
+  tabla_del_Total_Carro.setAttribute("id", "tabla_Del_Total");
+  const tr_del_Total_Carro = document.createElement("tr");
+  //tr_del_Total_Carro.setAttribute("id", "tr_total_Carro");
+  const td_del_Total_Carro = document.createElement("td");
+  td_del_Total_Carro.setAttribute("id", "td_total_Carro");
+  td_del_Total_Carro.textContent = "Total de tu compra " + num + moneda;
+
+  tr_del_Total_Carro.append(td_del_Total_Carro);
+  tabla_del_Total_Carro.append(tr_del_Total_Carro);
+
+  suma_Carro.append(tabla_del_Total_Carro);
+}
+
+function modifico_Total_Carro() {
+  const modifico_Total_Carro = document.getElementById("td_total_Carro");
+  modifico_Total_Carro.textContent = "Total de tu compra " + num + moneda;
+}*/
 function armar_Tabla_Carro(indice_Agregar) {
   const inicio_Carro = document.getElementById("cuerpo_Tabla_Carro");
 
@@ -31,7 +55,7 @@ function modifica_Tabla_Carro(indice) {
   const art_Modificar = document.getElementById(
     array_del_carro[indice].sku + "total"
   );
-  art_Modificar.textContent = array_del_carro[indice].total + moneda;
+  art_Modificar.textContent = array_del_carro[indice].total;
 }
 
 function remueve_Nodo_Carro(indice) {
