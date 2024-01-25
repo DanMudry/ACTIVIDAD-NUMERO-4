@@ -30,12 +30,12 @@ function crearTabla(arrayDeArticulos) {
     const celdaPrice = document.createElement("td");
 
     celdaPrice.setAttribute("data-id", articulo.SKU);
-    celdaPrice.textContent = articulo.price;
+    celdaPrice.textContent = articulo.price + moneda;
     nuevaFila.append(celdaPrice);
 
     const celdaTotal = document.createElement("td");
     celdaTotal.id = articulo.SKU;
-    celdaTotal.textContent = 0;
+    celdaTotal.textContent = 0 + moneda;
     nuevaFila.append(celdaTotal);
 
     miDiv.append(nuevaFila);
@@ -65,9 +65,8 @@ function escucharInput() {
       (articuloBuscado) => articuloBuscado.SKU === dataIde
     );
 
-    modificaPrecio.textContent = (
-      inputCantidad.value * precioArticulo.price
-    ).toFixed(2);
+    modificaPrecio.textContent =
+      (inputCantidad.value * precioArticulo.price).toFixed(2) + moneda;
 
     const indice_del_articulo = array_del_carro.findIndex(
       (producto) => producto.sku === dataIde

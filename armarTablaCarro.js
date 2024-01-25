@@ -19,7 +19,8 @@ function armar_Tabla_Carro(indice_Agregar) {
     "id",
     array_del_carro[indice_Agregar].sku + "total"
   );
-  total_Linea_Carro.textContent = array_del_carro[indice_Agregar].total;
+  total_Linea_Carro.textContent =
+    array_del_carro[indice_Agregar].total + moneda;
 
   fila_Carro.append(total_Linea_Carro);
 
@@ -30,7 +31,7 @@ function modifica_Tabla_Carro(indice) {
   const art_Modificar = document.getElementById(
     array_del_carro[indice].sku + "total"
   );
-  art_Modificar.textContent = array_del_carro[indice].total;
+  art_Modificar.textContent = array_del_carro[indice].total + moneda;
 }
 
 function remueve_Nodo_Carro(indice) {
